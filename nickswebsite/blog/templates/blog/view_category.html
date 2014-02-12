@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head_title %}{{ category.title }} Posts{% endblock %}
+{% block title %}{{ category.title }} Posts{% endblock %}
+
+{% block content %}
+	{%  if posts %}
+		<ul>
+		{% for post in posts %}
+			<li><p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+				<p>{{ post.body|safe|truncatewords:"60" }}
+			</li>
+		{% endfor %}
+		</ul>
+		{% else %}
+			<p>There are no posts.</p>
+		{% endif %}
+{% endblock %}
