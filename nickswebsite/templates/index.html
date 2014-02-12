@@ -19,7 +19,7 @@
 		<ul>
 		{% for post in posts %}
 			<li>
-				<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></p>
+				<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>&nbsp {{ post.posted }}</p>
 				<p>{{ post.body|safe|truncatewords:"60"}}</p>
 			</li>
 		{% endfor %}
