@@ -1,14 +1,16 @@
 <html>
 <head>
 	<title>{% block head_title %}NickStefan.net{% endblock %}</title>
-	<link rel="stylesheet" type="text/css" href="/static/originaltheme.css">
+	<link rel="stylesheet" type="text/css" href="/static/originaltheme.css"> 
 </head>
 <body>
 <div id="container">
-	<div id="header"></div>
+	<div id="header">
+		<div id="homebutton"><a href="/">Nick Stefan: the blog</a></div>
+	</div>
 	
 	<div id="sidebar">
-		<h1>{% block title %}Nick Stefan: the blog{% endblock %}</h1>
+		<h1>{% block title %}&nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp{% endblock %}</h1>
 	</div>
 	<div id="content">
 		{% block content %}

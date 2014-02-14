@@ -1,0 +1,56 @@
+
+body {
+	margin: 0em;
+	padding: 0em;
+}
+#container {
+	max-width: 100%;
+	margin: 0;
+	background-color: black;
+	font-family: sans-serif;
+	
+}
+
+#header {
+	margin: auto;
+	max-height: 6em;
+	background-color: black;
+	padding: 0em;
+}
+
+#homebutton {
+	text-decoration: none;
+	max-width: 6em;
+	padding: 1em;
+	font-size: 1.5em;
+}
+
+#homebutton a:link {
+	text-decoration: none;
+	color: #00BFFF;
+}
+
+#homebutton a:visited {
+	text-decoration: none;
+	color: #00BFFF;
+	font-family: sans-serif;
+}
+
+#homebutton a:hover {
+	color: #ffffff;
+	max-height: 100%;
+}
+
+#sidebar {
+	max-width: 12em;
+	max-height: 48em;
+	float: left;
+	padding: 1em;
+}
+
+#content {
+	max-width: 48em;
+	float: left;
+	background-color: #E0FFFF;
+	padding: 1em;
+}
