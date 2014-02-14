@@ -21,3 +21,6 @@ def view_category(request, slug):
         'category': get_object_or_404(Category, slug=slug),
         'posts': Blog.objects.filter(category=category)[:5]   
     })
+    
+def view_about(request):
+    return render_to_response('about.html',)

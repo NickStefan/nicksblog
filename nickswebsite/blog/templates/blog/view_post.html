@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block head_title %}{{ post.title }}{% endblock %}
 {% block title %}
+<div id="myheadline">
 <h1>{{ post.title }}</h1>
 <h4>{{ post.posted }}<h4>
+</div>
 {% endblock %}
 
+{% autoescape off %}
 {% block content %}
 	<p>{{ post.body|safe }}</p>
 {% endblock %}
+{% endautoescape %}

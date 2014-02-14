@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block head_title %}{{ category.title }} Posts{% endblock %}
-{% block title %}{{ category.title }} Posts{% endblock %}
+{% block title %}<div id="myheadline"><h1>{{ category.title }} Posts</h1></div>{% endblock %}
 
 {% block content %}
 	{%  if posts %}

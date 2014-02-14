@@ -17,6 +17,6 @@ urlpatterns = patterns('',
     url(r'^blog/category/(?P<slug>[^\.]+)',
     'blog.views.view_category',
     name='view_blog_category'),
-    
+    url(r'^about/', 'blog.views.view_about'),
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -41,11 +41,46 @@ body {
 	max-height: 100%;
 }
 
+#myheadline {
+	color: #00BFFF;
+	background-color: black;
+	border: 1em solid black;
+}
+
 #sidebar {
-	max-width: 12em;
-	max-height: 48em;
+	max-width: 13em;
 	float: left;
 	padding: 1em;
+}
+
+#myimage {
+	border: 1em solid black;
+}
+
+#mylink {
+	max-height: 3em;
+	max-width: 12em;
+	padding-top: 1em;
+	padding-left: .5em;
+	padding-right: .5em;
+	padding-bottom: 2em;
+	background-color: black;
+}
+
+#mylink a:link {
+	text-decoration: none;
+	color: #00BFFF;
+}
+
+#mylink a:visited {
+	text-decoration: none;
+	color: #00BFFF;
+	font-family: sans-serif
+}
+
+#mylink a:hover {
+	color: #ffffff;
+	max-height: 100%;
 }
 
 #content {
