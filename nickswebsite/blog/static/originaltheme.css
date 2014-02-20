@@ -8,7 +8,6 @@ body {
 	margin: 0;
 	background-color: black;
 	font-family: sans-serif;
-	
 }
 
 #header {
@@ -45,6 +44,7 @@ body {
 	color: #00BFFF;
 	background-color: black;
 	border: 1em solid black;
+	border-radius: 10pt;
 }
 
 #sidebar {
@@ -55,6 +55,7 @@ body {
 
 #myimage {
 	border: 1em solid black;
+	border-radius: 10pt;
 }
 
 #mylink {
@@ -65,6 +66,7 @@ body {
 	padding-right: .5em;
 	padding-bottom: 2em;
 	background-color: black;
+	border-radius: 10pt;
 }
 
 #mylink a:link {
@@ -84,7 +86,7 @@ body {
 }
 
 #content {
-	max-width: 48em;
+	max-width: 44em;
 	float: left;
 	background-color: #E0FFFF;
 	padding: 1em;
