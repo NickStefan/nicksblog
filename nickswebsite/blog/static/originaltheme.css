@@ -22,6 +22,7 @@ body {
 	max-width: 6em;
 	padding: 1em;
 	font-size: 1.5em;
+	float: left;
 }
 
 #headerbutton a:link {
