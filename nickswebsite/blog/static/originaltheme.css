@@ -17,19 +17,19 @@ body {
 	padding: 0em;
 }
 
-#homebutton {
+#headerbutton {
 	text-decoration: none;
 	max-width: 6em;
 	padding: 1em;
 	font-size: 1.5em;
 }
 
-#homebutton a:link {
+#headerbutton a:link {
 	text-decoration: none;
 	color: #00BFFF;
 }
 
-#homebutton a:visited {
+#headerbutton a:visited {
 	text-decoration: none;
 	color: #00BFFF;
 	font-family: sans-serif;
