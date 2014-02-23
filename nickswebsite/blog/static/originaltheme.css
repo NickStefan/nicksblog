@@ -35,7 +35,7 @@ body {
 	font-family: sans-serif;
 }
 
-#homebutton a:hover {
+#headerbutton a:hover {
 	color: #ffffff;
 	max-height: 100%;
 }
@@ -88,6 +88,5 @@ body {
 #content {
 	max-width: 44em;
 	float: left;
-	background-color: #E0FFFF;
 	padding: 1em;
 }
