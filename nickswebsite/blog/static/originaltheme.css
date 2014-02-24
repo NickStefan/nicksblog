@@ -5,9 +5,14 @@ body {
 	background-color: #E0FFFF;
 	max-width: 70em;
 }
+
+p {
+    font-size: 1.20em;
+    line-height: 1.30em;
+}
 #container {
 	width: 55em;
-	margin-top: 2em;
+	margin-top: 0em;
 	margin-bottom: 2em;
 	margin-left: auto;
 	margin-right: auto;
@@ -86,7 +91,7 @@ body {
 }
 
 #content {
-	max-width: 55em;
+	max-width: 40em;
 	padding: 1em;
 	background-color: #ffffff;
 }
