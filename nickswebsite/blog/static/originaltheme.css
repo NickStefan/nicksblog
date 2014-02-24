@@ -14,7 +14,7 @@ body {
 	margin: auto;
 	max-height: 6em;
 	background-color: black;
-	padding: 0em;
+	padding: 1em;
 }
 
 #headerbutton {
@@ -22,7 +22,7 @@ body {
 	max-width: 6em;
 	padding: 1em;
 	font-size: 1.5em;
-	float: left;
+	display: inline;
 }
 
 #headerbutton a:link {
@@ -48,9 +48,8 @@ body {
 	border-radius: 10pt;
 }
 
-#sidebar {
-	max-width: 13em;
-	float: left;
+#titlebar {
+	max-width: 44em;
 	padding: 1em;
 }
 
@@ -88,6 +87,5 @@ body {
 
 #content {
 	max-width: 44em;
-	float: left;
 	padding: 1em;
 }
