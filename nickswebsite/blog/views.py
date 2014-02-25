@@ -6,7 +6,7 @@ from blog.models import Blog, Category
 def index(request):
     return render_to_response('index.html', {
         'categories': Category.objects.all(),
-        'posts': Blog.objects.all()[:10:-1]
+        'posts': Blog.objects.all()[:10:-1],
     })
 
 def view_post(request, slug):
@@ -19,8 +19,31 @@ def view_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     return render_to_response('blog/view_category.html',{
         'category': get_object_or_404(Category, slug=slug),
-        'posts': Blog.objects.filter(category=category)[:5]
+        'posts': Blog.objects.filter(category=category)[::-1]
     })
 
 def view_about(request):
     return render_to_response('about.html',)
+    
+def search(request):
+    errors = []
+    if 'q' in request.GET:
+        q = request.GET['q']
+        if not q:
+            errors.append('Enter a search term.')
+            return render_to_response('search_results.html', {
+            'error': errors
+            })
+        elif: len(q) > 100:
+            errors.append('Please enter at most 100 characters.')
+            
+        else:
+            return render_to_response('search_results.html',{
+            'foundposts': Blog.objects.filter(body__icontains=q), 
+            'query': q
+        })
+    else:
+        return render_to_response('search_results.html', {
+        'error': errors
+    })
+    

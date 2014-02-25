@@ -19,4 +19,5 @@ urlpatterns = patterns('',
     name='view_blog_category'),
     url(r'^about/', 'blog.views.view_about'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^blog/search/$', 'blog.views.search')
 )

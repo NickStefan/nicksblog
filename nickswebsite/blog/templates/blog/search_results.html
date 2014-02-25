@@ -4,39 +4,32 @@
 
 {% block title %}
 <div id="myheadline">
-	<h1>Nick Stefan's Random Stories</h1>
+	<h1>Search Results</h1>
 </div>
 {% endblock %}
 
 {% block content %}
+{% if errors %}
+<p style='color: red;'>{{ errors }}</p>
+{% endif %}
 <p><form action="blog/search/" method="get">
         <input type="submit" value="Search My Random Stories">
 		<input type="text" name="q">
 </form><p>
-	<h2>Categories</h2>
-	{% if categories %}
-			<p>{% for category in categories %}
-				<a href="{{ category.get_absolute_url }}"> {{ category.title }}</a> &nbsp
-			{% endfor %}
-			</p>
-			
-		</ul>
-	{% else %}
-		<p>There are no posts.</p>
-	{% endif %}
 	
-	<h2>Posts</h2>
-	{% if posts %}
+	{% if foundposts %}
+		<p> Found {{ foundposts|length }} post{{ foundposts|pluralize}} containing <em>"{{ query }}"</em>.</p>
 		<ul>
-		{% for post in posts %}
+			{% for foundpost in foundposts %}
 			<li>
 				<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>&nbsp {{ post.posted }}</p>
 				<p>{{ post.body|safe|truncatewords:"60"}}</p>
 			</li>
-		{% endfor %}
-		</ul>
+			{% endfor %}
+			
 	{% else %}
-		<p>There are no posts.</p>
+			<p>Nothing found</p>
+			
 	{% endif %}
 	
 {% endblock %}
