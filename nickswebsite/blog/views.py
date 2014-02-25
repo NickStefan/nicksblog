@@ -30,20 +30,23 @@ def search(request):
     if 'q' in request.GET:
         q = request.GET['q']
         if not q:
-            errors.append('Enter a search term.')
-            return render_to_response('search_results.html', {
+            errors.append('No search term was received')
+            return render_to_response('blog/search_results.html', {
             'error': errors
             })
-        elif: len(q) > 100:
-            errors.append('Please enter at most 100 characters.')
+        elif len(q) > 100:
+            errors.append('Search term must be less than 100 characters')
+            return render_to_response('blog/search_results.html', {
+            'error': errors
+            })
             
         else:
-            return render_to_response('search_results.html',{
-            'foundposts': Blog.objects.filter(body__icontains=q), 
+            return render_to_response('blog/search_results.html',{
+            'foundposts': Blog.objects.filter(body__icontains=q)[::-1], 
             'query': q
         })
     else:
-        return render_to_response('search_results.html', {
+        return render_to_response('blog/search_results.html', {
         'error': errors
     })
     

@@ -9,27 +9,27 @@
 {% endblock %}
 
 {% block content %}
-{% if errors %}
-<p style='color: red;'>{{ errors }}</p>
+{% if error %}
+<p style='color: red;'>{{ error.0 }}</p>
 {% endif %}
-<p><form action="blog/search/" method="get">
-        <input type="submit" value="Search My Random Stories">
+<p><form action="" method="get">
+        <input type="submit" value="Search Random Stories">
 		<input type="text" name="q">
 </form><p>
-	
+
 	{% if foundposts %}
-		<p> Found {{ foundposts|length }} post{{ foundposts|pluralize}} containing <em>"{{ query }}"</em>.</p>
+		<p> Found {{ foundposts|length }} post{{ foundposts|pluralize}} containing <em>{{ query }}</em></p>
 		<ul>
 			{% for foundpost in foundposts %}
-			<li>
-				<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>&nbsp {{ post.posted }}</p>
-				<p>{{ post.body|safe|truncatewords:"60"}}</p>
-			</li>
+			<div class='postlists'><li>
+				<p><a href="{{ foundpost.get_absolute_url }}">{{ foundpost.title }}</a><br>{{ foundpost.posted|date }}</p>
+				<p>{{ foundpost.body|safe|truncatewords:"60"}}</p>
+			</li></div>
 			{% endfor %}
-			
+
 	{% else %}
 			<p>Nothing found</p>
-			
+
 	{% endif %}
-	
+
 {% endblock %}

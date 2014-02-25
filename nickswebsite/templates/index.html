@@ -10,7 +10,7 @@
 
 {% block content %}
 <p><form action="blog/search/" method="get">
-        <input type="submit" value="Search My Random Stories">
+        <input type="submit" value="Search Random Stories">
 		<input type="text" name="q">
 </form><p>
 	<h2>Categories</h2>
@@ -19,24 +19,24 @@
 				<a href="{{ category.get_absolute_url }}"> {{ category.title }}</a> &nbsp
 			{% endfor %}
 			</p>
-			
+
 		</ul>
 	{% else %}
 		<p>There are no posts.</p>
 	{% endif %}
-	
+
 	<h2>Posts</h2>
 	{% if posts %}
 		<ul>
 		{% for post in posts %}
-			<li>
-				<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>&nbsp {{ post.posted }}</p>
+			<div class='postlists'><li>
+				<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>{{ post.posted|date }}</p>
 				<p>{{ post.body|safe|truncatewords:"60"}}</p>
-			</li>
+			</li></div>
 		{% endfor %}
 		</ul>
 	{% else %}
 		<p>There are no posts.</p>
 	{% endif %}
-	
+
 {% endblock %}
