@@ -7,6 +7,7 @@
 		<ul>
 		{% for post in posts %}
 			<div class='postlists'><li><p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>{{ post.posted|date }}</p>
+				
 				<p>{{ post.body|safe|truncatewords:"60" }}
 			</li></div>
 		{% endfor %}
