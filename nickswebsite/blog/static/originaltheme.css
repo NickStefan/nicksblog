@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Audiowide);
 
 body {
 	padding: 0;
@@ -33,6 +34,7 @@ p {
 	max-height: 6em;
 	background-color: black;
 	padding: 1em;
+	font-family: Audiowide;
 }
 
 #headerbutton {
@@ -64,6 +66,7 @@ p {
 	background-color: black;
 	border: 1em solid black;
 	border-radius: 10pt;
+	font-family: Audiowide;
 }
 
 #titlebar {
@@ -103,4 +106,8 @@ p {
 	background-color: #ffffff;
 	margin-top: 0em;
 	padding-top: 0em;
+}
+
+.aboutpagesections {
+	width: 51em;
 }
