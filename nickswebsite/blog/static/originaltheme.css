@@ -111,3 +111,8 @@ p {
 .aboutpagesections {
 	width: 51em;
 }
+
+.code {
+	background-color: #D8D8D8;
+	font-family: courier;
+}
