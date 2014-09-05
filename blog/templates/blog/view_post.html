@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 {% block head_title %}{{ post.title }}{% endblock %}
 {% block title %}
-<div id="myheadline">
-<h1>{{ post.title }}</h1>
+<h3>{{ post.title }}</h3>
 <h4>{{ post.posted|date }}<h4>
-	<h4>Categories: &nbsp {% for category in post.category.all %}{{ category }} &nbsp {% endfor %}</h4>
-</div>
+<h4>Categories: &nbsp; {% for category in post.category.all %}{{ category }} &nbsp; {% endfor %}</h4>
 {% endblock %}
 
 {% autoescape off %}
 {% block content %}
-	<p>{{ post.body|safe }}</p>
+	{{ post.body|safe }}
 {% endblock %}
 {% endautoescape %}

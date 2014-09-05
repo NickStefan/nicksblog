@@ -1,115 +1,57 @@
 @import url(http://fonts.googleapis.com/css?family=Audiowide);
 
-body {
-	padding: 0;
-	margin: 0;
-	background-color: #E0FFFF;
-	max-width: 70em;
+.main-container {
+  margin-top: 50px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
+
+.blog-search {
+  margin-top: 10px;
+}
+
+.title-bar {
+  background-color: #00BFFF;
+  display: inline-block;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.title-bar h3, .title-bar h4 {
+  margin: 10px;
+}
+
+.content {
+	max-width: 40em;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+p {
+  margin: 24px 0 24px 0;
+}
+
+.navbar-brand, .navbar-default, .navbar-right > li > a {
+  font-family: Audiowide;
+  color: #00BFFF !important;
+  background-color: black;
+}
+
+.search-btn {
+  background-color: #00BFFF;
+  font-weight: bold;
+  overflow: hidden;
+}
+
 input {
 	font-family: sans-serif; 
-	font-size: 1.2em;
-}
-p {
-    font-size: 1.20em;
-    line-height: 1.30em;
+	font-size: 18px;
 }
 
 .postlists {
-	border-bottom: .15em solid black;
-}
-#container {
-	width: 55em;
-	margin-top: 0em;
-	margin-bottom: 2em;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: white;
-	font-family: sans-serif;
-	border: .5em solid black;
-}
-
-#header {
-	margin: auto;
-	max-height: 6em;
-	background-color: black;
-	padding: 1em;
-	font-family: Audiowide;
-}
-
-#headerbutton {
-	text-decoration: none;
-	max-width: 6em;
-	padding: 1em;
-	font-size: 1.5em;
-	display: inline;
-}
-
-#headerbutton a:link {
-	text-decoration: none;
-	color: #00BFFF;
-}
-
-#headerbutton a:visited {
-	text-decoration: none;
-	color: #00BFFF;
-	font-family: sans-serif;
-}
-
-#headerbutton a:hover {
-	color: #ffffff;
-	max-height: 100%;
-}
-
-#myheadline {
-	color: #00BFFF;
-	background-color: black;
-	border: 1em solid black;
-	border-radius: 10pt;
-	font-family: Audiowide;
-}
-
-#titlebar {
-	max-width: 55em;
-	padding: 1em;
-}
-
-#myimage {
-	border: 1em solid black;
-	border-radius: 10pt;
-}
-
-#mylink {
-	background-color: black;
-	text-decoration: none;
-	border-radius: 10pt;
-}
-
-#mylink a:link {
-	text-decoration: none;
-	color: #00BFFF;
-}
-
-#mylink a:visited {
-	text-decoration: none;
-	color: #00BFFF;
-}
-
-#mylink a:hover {
-	text-decoration: none;
-	color: #ffffff;
-}
-
-#content {
-	max-width: 40em;
-	padding: 1em;
-	background-color: #ffffff;
-	margin-top: 0em;
-	padding-top: 0em;
-}
-
-.aboutpagesections {
-	width: 51em;
+  list-style-type: none;
+	border-bottom: 1px solid #999;
+  margin-bottom: 30px;
 }
 
 .code {

@@ -3,19 +3,24 @@
 {% block head_title %}www.NickStefan.net{% endblock %}
 
 {% block title %}
-<div id="myheadline">
-	<h1>Search Results</h1>
-</div>
 {% endblock %}
 
 {% block content %}
-{% if error %}
-<p style='color: red;'>{{ error.0 }}</p>
-{% endif %}
-<p><form action="" method="get">
-        <input type="submit" value="Search Posts">
-		<input type="text" name="q">
-</form><p>
+
+  <div class="row">
+  <form class="blog-search" action="" method="get">
+    <div class="col-xs-3">
+    <button class="btn btn-block search-btn" type="submit">Search</button>
+    </div>
+    <div class="col-xs-9">
+		<input class="form-control" type="text" name="q">
+    </div>
+  </form>
+  </div>
+  
+  {% if error %}
+  <p style='color: red;'>{{ error.0 }}</p>
+  {% endif %}
 
 	{% if foundposts %}
 		<p> Found {{ foundposts|length }} post{{ foundposts|pluralize}} containing <em>{{ query }}</em></p>
@@ -29,7 +34,6 @@
 
 	{% else %}
 			<p>Nothing found</p>
-
 	{% endif %}
 
 {% endblock %}

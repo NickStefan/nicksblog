@@ -3,20 +3,25 @@
 {% block head_title %}www.NickStefan.net{% endblock %}
 
 {% block title %}
-<div id="myheadline">
-	<h1>Nick Stefan</h1>
-</div>
 {% endblock %}
 
 {% block content %}
-<p><form action="blog/search/" method="get">
-        <input type="submit" value="Search Posts">
-		<input type="text" name="q">
-</form><p>
+  
+  <div class="row">
+  <form class="blog-search" action="blog/search/" method="get">
+    <div class="col-xs-3">
+    <button class="btn btn-block search-btn" type="submit">Search</button>
+    </div>
+    <div class="col-xs-9">
+		<input class="form-control" type="text" name="q">
+    </div>
+  </form>
+  </div>
+
 	<h2>Categories</h2>
 	{% if categories %}
 			<p>{% for category in categories %}
-				<a href="{{ category.get_absolute_url }}"> {{ category.title }}</a> &nbsp
+				<a href="{{ category.get_absolute_url }}"> {{ category.title }}</a> &nbsp;
 			{% endfor %}
 			</p>
 
@@ -32,7 +37,7 @@
 			<div class='postlists'><li>
 				<p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>{{ post.posted|date }}</p>
 				<p>{{ post.body|safe|truncatewords:"60"}}</p>
-				<p>Categories: &nbsp {% for category in post.category.all %}{{ category }} &nbsp {% endfor %}</p>
+				<p>Categories: &nbsp; {% for category in post.category.all %}{{ category }} &nbsp; {% endfor %}</p>
 			</li></div>
 		{% endfor %}
 		</ul>
