@@ -14,7 +14,7 @@
   background-color: #00BFFF;
   display: inline-block;
   border-radius: 10px;
-  margin-top: 10px;
+  margin: 10px 0 24px 0;
 }
 
 .title-bar h3, .title-bar h4 {
@@ -27,8 +27,28 @@
   line-height: 1.5;
 }
 
-p {
+.content > h4 {
+    font-weight: bold;
+}
+
+.content > p {
   margin: 24px 0 24px 0;
+}
+
+.content > p:first-child {
+    margin: 0px 0 24px 0;
+}
+
+.content > ul > li {
+    margin: 20px 0 20px 0;
+}
+
+.content > ul > li:first-child {
+   margin: 0 0 0 0;
+}
+
+.content > ul > li:last-child {
+  margin: 0 0 0 0;
 }
 
 .navbar-brand, .navbar-default, .navbar-right > li > a {
@@ -44,7 +64,7 @@ p {
 }
 
 input {
-	font-family: sans-serif; 
+	font-family: sans-serif;
 	font-size: 18px;
 }
 
