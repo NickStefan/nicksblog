@@ -7,7 +7,7 @@ class Category(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
     
-    @permalink
+    @permalink # this puts a 'view on site' link in the admin
     def get_absolute_url(self):
         return ('view_blog_category', None, {'slug': self.slug})
         
@@ -20,11 +20,15 @@ class Blog (models.Model):
     body = models.TextField()
     posted = models.DateTimeField(db_index=True) #auto_now_add=True
     category = models.ManyToManyField(Category)
+    live = models.BooleanField(default=False)
     
     def __unicode__(self):
         return '%s' % self.title
     
-    @permalink
+    @permalink # this puts a 'view on site' link in the admin
     def get_absolute_url(self):
-        return ('view_blog_post', None, {'slug': self.slug})
+        if self.live == True:
+            return ('view_blog_post', None, {'slug': self.slug})
+        else:
+            return ('view_blog_preview', None, {'slug': self.slug})
         
