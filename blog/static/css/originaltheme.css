@@ -39,15 +39,15 @@
     margin: 0px 0 24px 0;
 }
 
-.content > ul > li {
+.content > ul > li, .content > ol > li {
     margin: 20px 0 20px 0;
 }
 
-.content > ul > li:first-child {
+.content > ul > li:first-child, .content > ol > li:first-child {
    margin: 0 0 0 0;
 }
 
-.content > ul > li:last-child {
+.content > ul > li:last-child, .content > ol > li:last-child {
   margin: 0 0 0 0;
 }
 
@@ -77,4 +77,6 @@ input {
 .code {
 	background-color: #D8D8D8;
 	font-family: courier;
+	min-width: 600px;
+	overflow: scroll;
 }

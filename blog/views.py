@@ -7,7 +7,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 def index(request):
     return render_to_response('index.html', {
         'categories': Category.objects.distinct().filter(blog__live=True),
-        'posts': Blog.objects.filter(live=True)[:10:-1],
+        'posts': Blog.objects.filter(live=True)[:100:-1],
     })
 
 def view_post(request, slug):
@@ -25,7 +25,7 @@ def view_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     return render_to_response('blog/view_category.html',{
         'category': get_object_or_404(Category, slug=slug),
-        'posts': Blog.objects.filter(category=category,live=True)[::-1]
+        'posts': Blog.objects.filter(category=category,live=True).order_by('-posted')
     })
 
 def view_about(request):
