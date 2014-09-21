@@ -10,15 +10,15 @@ urlpatterns = patterns('',
     # url(r'^$', 'nickswebsite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', 'blog.views.index'),
-    
+
     url(r'^blog/view/(?P<slug>[^\.]+)',
     'blog.views.view_post',
     name='view_blog_post'),
-    
+
     url(r'^blog/preview/(?P<slug>[^\.]+)',
     'blog.views.preview_post',
     name='view_blog_preview'),
-    
+
     url(r'^blog/category/(?P<slug>[^\.]+)',
     'blog.views.view_category',
     name='view_blog_category'),
@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/search/$', 'blog.views.search'),
     url(r'^upload/img$','blog.views.upload_image'),
-    url(r'^upload/doc$','blog.views.upload_doc')
+    url(r'^upload/doc$','blog.views.upload_doc'),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media'})
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
