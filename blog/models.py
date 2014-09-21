@@ -31,4 +31,10 @@ class Blog (models.Model):
             return ('view_blog_post', None, {'slug': self.slug})
         else:
             return ('view_blog_preview', None, {'slug': self.slug})
+
+class Document(models.Model):
+    jsfile = models.FileField(upload_to='js/')
+    imgfile = models.FileField(upload_to='img/')
+    docfile = models.FileField(upload_to='doc/')
+
         

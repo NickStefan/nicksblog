@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
 from settings import *
 from django.contrib import admin
 from django.conf.urls.static import static
@@ -23,5 +24,7 @@ urlpatterns = patterns('',
     name='view_blog_category'),
     url(r'^about/', 'blog.views.view_about'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^blog/search/$', 'blog.views.search')
-)
+    url(r'^blog/search/$', 'blog.views.search'),
+    url(r'^list/$','blog.views.list')
+
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

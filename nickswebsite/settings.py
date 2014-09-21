@@ -17,6 +17,8 @@ TEMPLATE_DIRS = os.path.join(BASE_DIR, 'templates')
 #STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 #STATIC_ROOT = (os.path.normpath(os.path.join(BASE_DIR, "static"),))
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -32,7 +34,7 @@ STATICFILES_FINDERS = (
 
 #set this to true when doing manage.py runserver for http://127.0.0.1:8000/
 #set to false for production
-LOCALDEV = False
+LOCALDEV = True
 
 if LOCALDEV == True:
     DEBUG = True

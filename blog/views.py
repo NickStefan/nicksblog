@@ -1,5 +1,6 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
-from blog.models import Blog, Category
+from blog.models import Blog, Category, Document
+from blog.forms import DocumentForm
 from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
@@ -20,6 +21,38 @@ def preview_post(request, slug):
     return render_to_response('blog/view_post.html',{
         'post': get_object_or_404(Blog, slug=slug)
     })
+
+@staff_member_required
+def list(request):
+    #handle file upload
+    if request.method == "POST":
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            if request.FILES.get('docfile'):
+              newdoc = Document(docfile = request.FILES['docfile'])
+              newdoc.save()
+
+            if request.FILES.get('imgfile'):
+              newimg = Document(imgfile = request.FILES['imgfile'])
+              newimg.save()
+
+            if request.FILES.get('jsfile'):
+              newjs = Document(jsfile = request.FILES['jsfile'])
+              newjs.save()
+
+            form = DocumentForm() #empty unbound form
+            documents = Document.objects.all()
+            return render_to_response('blog/list.html', {
+                'documents': documents, 'form': form
+                }, context_instance=RequestContext(request))
+    else:
+        form = DocumentForm() #empty unbound form
+        documents = Document.objects.all()
+        return render_to_response('blog/list.html', {
+            'documents': documents, 'form': form
+            }, context_instance=RequestContext(request))
+
 
 def view_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
