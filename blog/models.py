@@ -6,14 +6,14 @@ from django.db.models import permalink
 class Category(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
-    
+
     @permalink # this puts a 'view on site' link in the admin
     def get_absolute_url(self):
         return ('view_blog_category', None, {'slug': self.slug})
-        
+
     def __unicode__(self):
         return '%s' % self.title
-        
+
 class Blog (models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
@@ -21,10 +21,10 @@ class Blog (models.Model):
     posted = models.DateTimeField(db_index=True) #auto_now_add=True
     category = models.ManyToManyField(Category)
     live = models.BooleanField(default=False)
-    
+
     def __unicode__(self):
         return '%s' % self.title
-    
+
     @permalink # this puts a 'view on site' link in the admin
     def get_absolute_url(self):
         if self.live == True:
@@ -34,8 +34,17 @@ class Blog (models.Model):
 
 class ImageDocument(models.Model):
     imgfile = models.FileField(upload_to='img/')
+    filename = models.CharField(max_length=150)
+
+    def __unicode__(self):
+        return '%s' % self.filename
+
 
 class DocDocument(models.Model):
     docfile = models.FileField(upload_to='doc/')
+    filename = models.CharField(max_length=150)
 
-        
+    def __unicode__(self):
+        return '%s' % self.filename
+
+
