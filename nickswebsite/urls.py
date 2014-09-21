@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^about/', 'blog.views.view_about'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/search/$', 'blog.views.search'),
-    url(r'^list/$','blog.views.list')
+    url(r'^upload/img$','blog.views.upload_image'),
+    url(r'^upload/doc$','blog.views.upload_doc')
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

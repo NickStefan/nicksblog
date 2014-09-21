@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
-class DocumentForm(forms.Form):
+class ImageDocumentForm(forms.Form):
     imgfile = forms.FileField(
         label='Select an image file',
         help_text='media/img/'
     )
-    jsfile = forms.FileField(
-        label='Select a js file',
-        help_text='media/js/'
-    )
+
+class DocDocumentForm(forms.Form):
     docfile = forms.FileField(
-        label='Select other doc file',
+        label='Select an doc file',
         help_text='media/doc/'
     )

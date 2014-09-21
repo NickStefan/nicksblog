@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Media File Upload</title>   
-    </head>
-    <body>
+{% extends 'base.html' %}
+
+{% block head_title %}www.NickStefan.net{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
     <!-- List of uploaded documents -->
     {% if documents %}
         <ul>
@@ -27,5 +28,5 @@
             </p>
             <p><input type="submit" value="Upload" /></p>
         </form>
-    </body>
-</html> 
+        
+{% endblock %}

@@ -1,7 +1,8 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
-from blog.models import Blog, Category, Document
-from blog.forms import DocumentForm
+from blog.models import Blog, Category, ImageDocument, DocDocument
+from blog.forms import ImageDocumentForm, DocDocumentForm
 from django.contrib.admin.views.decorators import staff_member_required
+from django.template import RequestContext
 
 # Create your views here.
 
@@ -16,44 +17,6 @@ def view_post(request, slug):
         'post': get_object_or_404(Blog, slug=slug)
     })
 
-@staff_member_required
-def preview_post(request, slug):
-    return render_to_response('blog/view_post.html',{
-        'post': get_object_or_404(Blog, slug=slug)
-    })
-
-@staff_member_required
-def list(request):
-    #handle file upload
-    if request.method == "POST":
-        form = DocumentForm(request.POST, request.FILES)
-        if form.is_valid():
-
-            if request.FILES.get('docfile'):
-              newdoc = Document(docfile = request.FILES['docfile'])
-              newdoc.save()
-
-            if request.FILES.get('imgfile'):
-              newimg = Document(imgfile = request.FILES['imgfile'])
-              newimg.save()
-
-            if request.FILES.get('jsfile'):
-              newjs = Document(jsfile = request.FILES['jsfile'])
-              newjs.save()
-
-            form = DocumentForm() #empty unbound form
-            documents = Document.objects.all()
-            return render_to_response('blog/list.html', {
-                'documents': documents, 'form': form
-                }, context_instance=RequestContext(request))
-    else:
-        form = DocumentForm() #empty unbound form
-        documents = Document.objects.all()
-        return render_to_response('blog/list.html', {
-            'documents': documents, 'form': form
-            }, context_instance=RequestContext(request))
-
-
 def view_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     return render_to_response('blog/view_category.html',{
@@ -63,6 +26,78 @@ def view_category(request, slug):
 
 def view_about(request):
     return render_to_response('about.html',)
+
+@staff_member_required
+def preview_post(request, slug):
+    return render_to_response('blog/view_post.html',{
+        'post': get_object_or_404(Blog, slug=slug)
+    })
+
+@staff_member_required
+def upload_image(request):
+    #handle file upload
+    if request.method == "POST":
+        print "posted"
+        form = ImageDocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            print "valid"
+
+            if request.FILES.get('imgfile'):
+              newimg = ImageDocument(imgfile = request.FILES['imgfile'])
+              newimg.save()
+              print "saved"
+
+            form = ImageDocumentForm() #empty unbound form
+            documents = ImageDocument.objects.all()
+
+            return render_to_response('blog/imagelist.html', {
+                'documents': documents, 'form': form
+                }, context_instance=RequestContext(request))
+        else:
+            print "not valid"
+            form = ImageDocumentForm() #empty unbound form
+            documents = ImageDocument.objects.all()
+            return render_to_response('blog/imagelist.html', {
+                'documents': documents, 'form': form
+                }, context_instance=RequestContext(request))
+    else:
+        "print nope"
+        form = ImageDocumentForm() #empty unbound form
+        documents = ImageDocument.objects.all()
+        return render_to_response('blog/imagelist.html', {
+            'documents': documents, 'form': form
+            }, context_instance=RequestContext(request))
+
+@staff_member_required
+def upload_doc(request):
+    #handle file upload
+    if request.method == "POST":
+        form = DocDocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            if request.FILES.get('docfile'):
+              newdoc = DocDocument(docfile = request.FILES['docfile'])
+              newdoc.save()
+
+            form = DocDocumentForm() #empty unbound form
+            documents = DocDocument.objects.all()
+
+            return render_to_response('blog/doclist.html', {
+                'documents': documents, 'form': form
+                }, context_instance=RequestContext(request))
+        else:
+            form = DocDocumentForm() #empty unbound form
+            documents = DocDocument.objects.all()
+            return render_to_response('blog/doclist.html', {
+                'documents': documents, 'form': form
+                }, context_instance=RequestContext(request))
+    else:
+        form = DocDocumentForm() #empty unbound form
+        documents = DocDocument.objects.all()
+        return render_to_response('blog/doclist.html', {
+            'documents': documents, 'form': form
+            }, context_instance=RequestContext(request))
+
 
 def search(request):
     errors = []
