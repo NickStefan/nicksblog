@@ -1,13 +1,121 @@
-{% extends 'base.html' %}
-{% block head_title %}{{ post.title }}{% endblock %}
-{% block title %}
-<h3>{{ post.title }}</h3>
-<h4>{{ post.posted|date }}<h4>
-<h4>Categories: &nbsp; {% for category in post.category.all %}{{ category }} &nbsp; {% endfor %}</h4>
-{% endblock %}
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{ post.title }}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% autoescape off %}
-{% block content %}
-	{{ post.body|safe }}
-{% endblock %}
-{% endautoescape %}
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+
+        <script src="/static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+    <!--facebook-->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+        </script>
+    <!-- / facebook -->
+   
+
+    <span class="menu-trigger writer-icon animated fadeInDown">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </span>
+    <div class="hero-image" style="">
+
+        <!-- if the user has javascript disabled they can still use the menu -->
+        <noscript>
+            <div class="no-js-menu">
+                <ul>
+                    <li><i class="entypo-home"></i><a href="{% url 'home' %}">Home</a></li>
+                    <li><i class="entypo-star"></i><a href="#">Favorites</a></li>
+                    <li><i class="entypo-folder"></i><a href="#">Portfolio</a></li>
+                    <li><i class="entypo-github"></i><a href="https://github.com/nickstefan">github.com/NickStefan</a></li>
+                    <li><i class="entypo-linkedin"></i><a href="http://linkedin.com/in/nickstefan">linkedin.com/in/NickStefan</a></li>
+                    <!-- <li><i class="entypo-instagram"></i><a href="http://instagram.com/nickstefan12">@nickstefan12</a></li> -->
+                </ul>
+            </div>
+        </noscript>
+        <!-- end no script -->
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+        <div id="menu">
+            <ul>
+                <li><i class="entypo-home"></i><a href="{% url 'home' %}">Home</a></li>
+                <li><i class="entypo-star"></i><a href="#">Favorites</a></li>
+                <li><i class="entypo-folder"></i><a href="#">Portfolio</a></li>
+                <li><i class="entypo-github"></i><a href="https://github.com/nickstefan">github.com/NickStefan</a></li>
+                <li><i class="entypo-linkedin"></i><a href="http://linkedin.com/in/nickstefan">linkedin.com/in/NickStefan</a></li>
+                <!-- <li><i class="entypo-instagram"></i><a href="http://instagram.com/nickstefan12">@nickstefan12</a></li> -->
+            </ul>
+        </div>
+
+        <div class="col-xs-12 main-content single-content">
+            <p class="meta">
+                {% for category in post.category.all %}
+                <a class="" href="{{ category.get_absolute_url }}">{{ category }} </a>
+                <i class="link-spacer"></i>
+                {% endfor %} 
+                <i class="entypo-bookmark"></i> {{ post.posted|date }}
+            </p>
+            <h1>{{ post.title }}</h1>
+
+            {{ post.body|safe }}
+
+        <div class="single-footer">
+            <div class="social clearfix">
+                <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-width="100%" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+                <div class="fb-comments" data-width="100%" data-href="{{ request.build_absolute_uri }}" data-numposts="5" data-colorscheme="light"></div>
+            </div>
+            <div class="category-list">
+                <p>Also found in</p>
+                <ul>
+                    {% for category in post.category.all %}
+                      <li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        </div><!-- main-content/col -->
+
+
+        </div> <!--/row -->
+
+    </div> <!-- /container -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script src="/static/js/vendor/jquery.jpanelmenu.min.js"></script>
+        <script src="/static/js/vendor/bootstrap.min.js"></script>
+
+        <script src="/static/js/main.js"></script>
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-48251375-1', 'nickstefan.net');
+          ga('send', 'pageview');
+        </script>
+
+    </body>
+</html>

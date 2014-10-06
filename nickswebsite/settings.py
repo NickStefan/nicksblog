@@ -34,7 +34,7 @@ STATICFILES_FINDERS = (
 
 #set this to true when doing manage.py runserver for http://127.0.0.1:8000/
 #set to false for production
-LOCALDEV = False
+LOCALDEV = True
 
 if LOCALDEV == True:
     DEBUG = True
@@ -52,6 +52,7 @@ else:
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,6 +62,13 @@ INSTALLED_APPS = (
     'south',
     'blog',
 )
+
+# for DJANGO suit (ie the fancy admin)
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+    )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

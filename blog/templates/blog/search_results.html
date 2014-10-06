@@ -1,39 +1,43 @@
 {% extends 'base.html' %}
 
-{% block head_title %}www.NickStefan.net{% endblock %}
+{% block head_title %}NickStefan{% endblock %}
 
 {% block title %}
 {% endblock %}
 
 {% block content %}
 
-  <div class="row">
-  <form class="blog-search" action="" method="get">
-    <div class="col-sm-3">
-    <button class="btn btn-block search-btn" type="submit">Search</button>
-    </div>
-    <div class="col-sm-9">
-		<input class="form-control" type="text" name="q">
-    </div>
-  </form>
-  </div>
+    <div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
 
-  {% if error %}
-  <p style='color: red;'>{{ error.0 }}</p>
-  {% endif %}
+    {% if error %}
+    <p style='color: red;'>{{ error.0 }}</p>
+    {% endif %}
 
-	{% if foundposts %}
-		<p> Found {{ foundposts|length }} post{{ foundposts|pluralize}} containing <em>{{ query }}</em></p>
-		<ul>
-			{% for foundpost in foundposts %}
-			<div class='postlists'><li>
-				<p><a href="{{ foundpost.get_absolute_url }}">{{ foundpost.title }}</a><br>{{ foundpost.posted|date }}</p>
-				<p>{{ foundpost.body|safe|truncatewords:"60"}}</p>
-			</li></div>
-			{% endfor %}
+    {% if foundposts %}
+        {% for post in foundposts %}
+            <div class="post">
+                <section>
+                    <div class="post-preview col-xs-10  no-gutter">
 
-	{% else %}
-			<p>Nothing found</p>
-	{% endif %}
+                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <p>{{ post.body|safe|truncatewords:"60"}}</p>
+
+                    <p class="meta">
+                        {% for category in post.category.all %}<a class="" href="{{ category.get_absolute_url }}">{{ category }}</a> {% endfor %} <i class="link-spacer"></i> <i class="entypo-bookmark"></i> {{ post.posted|date }}
+                    </p>
+                    </div>
+
+                    <!-- <div class=" col-xs-2  no-gutter">
+                        <img src="img/profile-1.jpg" class="user-icon user-1" alt="user-image">
+                    </div> -->
+
+                </section>
+            </div>
+        {% endfor %}
+    {% else %}
+    <p>Nothing Found</p>
+    {% endif %}
+        
+    </div><!-- Home page posts -->
 
 {% endblock %}

@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'nickswebsite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', 'blog.views.index'),
+    url(r'^$', 'blog.views.index',name='home'),
 
     url(r'^blog/view/(?P<slug>[^\.]+)',
     'blog.views.view_post',
@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     name='view_blog_category'),
     url(r'^about/', 'blog.views.view_about'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^blog/search/$', 'blog.views.search'),
+    url(r'^blog/search/$', 'blog.views.search',name='blog_search'),
     url(r'^upload/img$','blog.views.upload_image'),
     url(r'^upload/doc$','blog.views.upload_doc'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'media'})

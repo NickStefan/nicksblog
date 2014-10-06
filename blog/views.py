@@ -9,13 +9,13 @@ from django.template import RequestContext
 def index(request):
     return render_to_response('index.html', {
         'categories': Category.objects.distinct().filter(blog__live=True),
-        'posts': Blog.objects.filter(live=True)[:100:-1],
+        'posts': Blog.objects.filter(live=True)[:30:-1],
     })
 
 def view_post(request, slug):
     return render_to_response('blog/view_post.html',{
         'post': get_object_or_404(Blog, slug=slug)
-    })
+    },context_instance=RequestContext(request))
 
 def view_category(request, slug):
     category = get_object_or_404(Category, slug=slug)

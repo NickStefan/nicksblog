@@ -7,16 +7,31 @@
 {% endblock %}
 
 {% block content %}
-	{%  if posts %}
-		<ul>
-		{% for post in posts %}
-			<div class='postlists'><li><p><a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>{{ post.posted|date }}</p>
-				
-				<p>{{ post.body|safe|truncatewords:"60" }}
-			</li></div>
-		{% endfor %}
-		</ul>
-		{% else %}
-			<p>There are no posts.</p>
-		{% endif %}
+<div class="col-md-7 col-sm-12 col-md-offset-5 main-content">
+
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post">
+                <section>
+                    <div class="post-preview col-xs-10  no-gutter">
+
+                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <p>{{ post.body|safe|truncatewords:"60"}}</p>
+
+                    <p class="meta">
+                        {% for category in post.category.all %}<a class="" href="{{ category.get_absolute_url }}">{{ category }}</a> {% endfor %} <i class="link-spacer"></i> <i class="entypo-bookmark"></i> {{ post.posted|date }}
+                    </p>
+                    </div>
+
+                    <!-- <div class=" col-xs-2  no-gutter">
+                        <img src="img/profile-1.jpg" class="user-icon user-1" alt="user-image">
+                    </div> -->
+
+                </section>
+            </div>
+        {% endfor %}
+    {% else %}
+    {% endif %}
+        
+
 {% endblock %}
