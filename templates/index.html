@@ -19,7 +19,7 @@
                     <div class="post-preview col-xs-10  no-gutter">
 
                     <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <p>{{ post.body|safe|truncatewords:"60"}}</p>
+                    <div class="postbody">{{ post.body|safe|truncatewords:"60"}}</div>
 
                     <p class="meta">
                         {% for category in post.category.all %}

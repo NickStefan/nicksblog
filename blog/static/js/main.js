@@ -43,4 +43,11 @@ $(function() {
 
     $('.hero-image-404').css("height", fullHeight );
 
+    $('.postbody').each(function(){
+        var mdown = $(this).html();
+        $(this).html(marked(mdown));
+    });
+
+    hljs.initHighlightingOnLoad();
+
 });

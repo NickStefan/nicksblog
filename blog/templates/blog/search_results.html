@@ -20,7 +20,7 @@
                     <div class="post-preview col-xs-10  no-gutter">
 
                     <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <p>{{ post.body|safe|truncatewords:"60"}}</p>
+                    <div class="postbody">{{ post.body|safe|truncatewords:"60"}}</div>
 
                     <p class="meta">
                         {% for category in post.category.all %}<a class="" href="{{ category.get_absolute_url }}">{{ category }}</a> {% endfor %} <i class="link-spacer"></i> <i class="entypo-bookmark"></i> {{ post.posted|date }}
