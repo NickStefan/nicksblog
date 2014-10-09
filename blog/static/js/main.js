@@ -5,7 +5,7 @@ $(function() {
     jPM = $.jPanelMenu({
 
         menu : '#menu',
-        trigge : '.menu-trigger',
+        trigger : '.menu-trigger',
         animated: false,
         beforeOpen : ( function() {
 
@@ -22,6 +22,7 @@ $(function() {
     });
 
     jPM.on();
+    $('.menu-trigger').click(function(){});
 
     $('.select-posts, .select-categories').on('click', function () {
 

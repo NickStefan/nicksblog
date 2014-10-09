@@ -34,7 +34,7 @@ STATICFILES_FINDERS = (
 
 #set this to true when doing manage.py runserver for http://127.0.0.1:8000/
 #set to false for production
-LOCALDEV = True
+LOCALDEV = False
 
 if LOCALDEV == True:
     DEBUG = True
