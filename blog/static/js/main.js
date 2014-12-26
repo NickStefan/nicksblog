@@ -58,7 +58,7 @@ $(function() {
         }).join('');
         $(this).html(marked(mdown));
     });
-    $('code').wrap('<pre></pre>');
+    $('.post-preview').find('code').wrap('<pre></pre>');
 
     hljs.initHighlightingOnLoad();
 
