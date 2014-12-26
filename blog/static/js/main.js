@@ -46,8 +46,19 @@ $(function() {
 
     $('.postbody').each(function(){
         var mdown = $(this).html();
+        var stack = [];
+        var mdown = mdown.split('').map(function(v,k,c){
+            if (v === '`') {
+                stack.push('`');
+            }
+            if (k === c.length - 4 && stack.length % 6 !== 0) {
+                return v + '```';
+            }
+            return v;
+        }).join('');
         $(this).html(marked(mdown));
     });
+    $('code').wrap('<pre></pre>');
 
     hljs.initHighlightingOnLoad();
 
