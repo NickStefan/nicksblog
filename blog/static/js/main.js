@@ -51,7 +51,7 @@ $(function() {
             if (v === '`') {
                 stack.push('`');
             }
-            if (k === c.length - 4 && stack.length % 6 !== 0) {
+            if (k === c.length - 4 && stack.length % 2 !== 0) {
                 return v + '```';
             }
             return v;
