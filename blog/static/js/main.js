@@ -44,20 +44,20 @@ $(function() {
 
     $('.hero-image-404').css("height", fullHeight );
 
-    $('.postbody').each(function(){
-        var mdown = $(this).html();
-        var stack = [];
-        var mdown = mdown.split('').map(function(v,k,c){
-            if (v === '`') {
-                stack.push('`');
-            }
-            if (k === c.length - 4 && stack.length % 2 !== 0) {
-                return v + '```';
-            }
-            return v;
-        }).join('');
-        $(this).html(marked(mdown));
-    });
+    // $('.postbody').each(function(){
+    //     var mdown = $(this).html();
+    //     var stack = [];
+    //     var mdown = mdown.split('').map(function(v,k,c){
+    //         if (v === '`') {
+    //             stack.push('`');
+    //         }
+    //         if (k === c.length - 4 && stack.length % 2 !== 0) {
+    //             return v + '```';
+    //         }
+    //         return v;
+    //     }).join('');
+    //     $(this).html(marked(mdown));
+    // });
     $('.post-preview').find('code').wrap('<pre></pre>');
 
     hljs.initHighlightingOnLoad();

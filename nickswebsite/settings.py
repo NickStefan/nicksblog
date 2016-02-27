@@ -34,7 +34,7 @@ STATICFILES_FINDERS = (
 
 #set this to true when doing manage.py runserver for http://127.0.0.1:8000/
 #set to false for production
-LOCALDEV = False
+LOCALDEV = True
 
 if LOCALDEV == True:
     DEBUG = True
@@ -53,6 +53,7 @@ else:
 
 INSTALLED_APPS = (
     'suit',
+    'markdownify',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,6 +63,26 @@ INSTALLED_APPS = (
     'south',
     'blog',
 )
+
+MARKDOWNIFY_WHITELIST_TAGS = [
+    'a',
+    'abbr',
+    'acronym',
+    'b',
+    'blockquote',
+    'em',
+    'i',
+    'li',
+    'ol',
+    'p',
+    'strong',
+    'ul',
+    'hr',
+    'h1','h2','h3','h4','h5','h6',
+    'span',
+    'pre',
+    'code'
+]
 
 # for DJANGO suit (ie the fancy admin)
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP

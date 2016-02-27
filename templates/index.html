@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load markdownify %}
+
 {% block head_title %}NickStefan{% endblock %}
            
 {% block content %}
@@ -19,7 +21,7 @@
                     <div class="post-preview col-xs-10  no-gutter">
 
                     <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <div class="postbody">{{ post.body|safe|truncatewords:"60"}}</div>
+                    <div class="postbody">{{ post.body|markdownify|safe|truncatewords:"60"}}</div>
 
                     <p class="meta">
                         {% for category in post.category.all %}

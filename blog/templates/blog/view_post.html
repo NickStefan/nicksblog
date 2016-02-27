@@ -74,9 +74,9 @@
                 <i class="entypo-bookmark"></i> {{ post.posted|date }}
             </p>
             <h1>{{ post.title }}</h1>
-
+        {% load markdownify %}
         <div class="postbody">
-            {{ post.body|safe }}
+            {{ post.body|markdownify|safe }}
         </div>
 
         <div class="single-footer">
